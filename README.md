@@ -1,6 +1,5 @@
-- started by going into node.js console - can't import easily - would have to start with parcel/babel.js to get import
 - svelte start here: [https://svelte.dev/blog/the-easiest-way-to-get-started#2_Use_degit](https://svelte.dev/blog/the-easiest-way-to-get-started#2_Use_degit)
-    - at some point I could probably branch that to include xstate
+    - at some point I could probably branch that to include xstate and rollup plugins
 - install xstate `npm install xstate -S`
 - copy getting started example into script and see if it works
 - sigh.  rollup doesn't like xstate? [`https://rollupjs.org/guide/en#error-this-is-undefined`](https://rollupjs.org/guide/en#error-this-is-undefined)
