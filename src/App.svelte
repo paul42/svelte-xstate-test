@@ -22,4 +22,4 @@
 	Click to toggle
 </button>
 
-<h6>State Machine State is found by getting custom store's value: {$customStore}</h6>
+<h6>State Machine State is found by getting custom store's value: {$customStore.value}</h6>

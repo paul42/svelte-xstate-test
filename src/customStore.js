@@ -18,7 +18,7 @@ const toggleMachine = Machine({
 
 
 function createCustomStore(){
-    const {set} = writable({value: 'inactive'});
+    const {subscribe, set} = writable({value: 'inactive'});
     const toggleService = interpret(toggleMachine)
         .onTransition(state => {
             console.log('state change:');
@@ -27,15 +27,16 @@ function createCustomStore(){
         })
 
     return {
-        subscribe: () => {
-            console.log('trying to subscribe?');
-            toggleService.start();
+        // subscribe: () => {
+        //     console.log('trying to subscribe?');
+        //     toggleService.start();
 
-            return () => {
-                console.log('trying to unsub?');
-                toggleService.stop();
-            }
-        },
+        //     return () => {
+        //         console.log('trying to unsub?');
+        //         toggleService.stop();
+        //     }
+        // },
+        subscribe,
         //I probably need to have set in here? the transition is out of scope.
         send: (eventIguess) => {
             console.log('got send with:');
