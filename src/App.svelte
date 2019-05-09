@@ -1,40 +1,6 @@
 <script>
 	export let name;
-	import { Machine, interpret } from 'xstate'; // or use your own interpreter!
-
-// Stateless machine definition
-// machine.transition(...) is a pure function used by the interpreter.
-const toggleMachine = Machine({
-  initial: 'inactive',
-  states: {
-    inactive: { on: { TOGGLE: 'active' } },
-    active: { on: { TOGGLE: 'inactive' } }
-  }
-});
-
-
-// Machine instance with internal state
-const toggleService = interpret(toggleMachine)
-  .onTransition(state => {
-	  console.log(state.value);
-	  
-  })
-  .start();
-// => 'inactive'
-
-$: currentState = toggleService.state.value
-
-toggleService.send('TOGGLE');
-// => 'active'
-
-toggleService.send('TOGGLE');
-// => 'inactive'
-
-function handleClick(){
-	toggleService.send('TOGGLE')
-	currentState = toggleService.state.value;
-}
-
+	import { customStore } from './customStore.js';
 </script>
 
 <style>
@@ -44,8 +10,8 @@ function handleClick(){
 </style>
 
 <h1>Hello {name}!</h1>
-<button on:click={handleClick}>
+<button on:click={customStore.send('TOGGLE')}>
 	Click to toggle
 </button>
 
-<h6>State Machine State is found by getting toggleService.state.value: {currentState}</h6>
+<h6>State Machine State is found by getting custom store's value: {$customStore}</h6>
