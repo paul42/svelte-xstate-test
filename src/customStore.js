@@ -18,12 +18,12 @@ const toggleMachine = Machine({
 
 
 function createCustomStore(){
-    const {set} = writable(toggleMachine.initialState);
+    const {set} = writable({value: 'inactive'});
     const toggleService = interpret(toggleMachine)
         .onTransition(state => {
             console.log('state change:');
             console.log(state);
-             set(state);
+            set(state);
         })
 
     return {
@@ -36,6 +36,7 @@ function createCustomStore(){
                 toggleService.stop();
             }
         },
+        //I probably need to have set in here? the transition is out of scope.
         send: (eventIguess) => {
             console.log('got send with:');
             console.log(eventIguess);

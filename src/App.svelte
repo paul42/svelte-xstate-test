@@ -1,6 +1,14 @@
 <script>
 	export let name;
 	import { customStore } from './customStore.js';
+
+	function handleClick(event){
+		console.log('got click with:');
+		console.log(event);
+		customStore.send('TOGGLE');
+		console.log('store is now:')
+		console.log($customStore);
+	}
 </script>
 
 <style>
@@ -10,7 +18,7 @@
 </style>
 
 <h1>Hello {name}!</h1>
-<button on:click={customStore.send('TOGGLE')}>
+<button on:click={handleClick}>
 	Click to toggle
 </button>
 
