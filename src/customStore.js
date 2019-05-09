@@ -27,6 +27,9 @@ function createCustomStore(){
         })
 
     return {
+        
+        //Paul42: for some reason my subscribe method fires... but the store doesn't get initialized or svelete doesn't see it as a good store?
+
         // subscribe: () => {
         //     console.log('trying to subscribe?');
         //     toggleService.start();
@@ -36,7 +39,8 @@ function createCustomStore(){
         //         toggleService.stop();
         //     }
         // },
-        subscribe,
+
+        subscribe, //Paul42: using svelte's built in subscribe does work though, but I loose my custom toggleservice.start(); logic that I do want on subscribe.
         //I probably need to have set in here? the transition is out of scope.
         send: (eventIguess) => {
             console.log('got send with:');
