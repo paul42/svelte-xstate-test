@@ -1,19 +1,19 @@
 <script>
 	export let name;
-	import { customStore } from './customStore.js';
+	import { customStore } from "./customStore.js";
 
-	function handleClick(event){
-		console.log('got click with:');
-		console.log(event);
-		customStore.send('TOGGLE');
-		console.log('store is now:')
-		console.log($customStore);
+	function handleClick(event) {
+	  console.log("got click with:");
+	  console.log(event);
+	  customStore.send("TOGGLE");
+	  console.log("store is now:");
+	  console.log($customStore);
 	}
 </script>
 
 <style>
 	h1 {
-		color: purple;
+	  color: purple;
 	}
 </style>
 
